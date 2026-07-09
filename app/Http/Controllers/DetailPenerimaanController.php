@@ -2,16 +2,18 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailPenerimaan;
 use Illuminate\Http\Request;
 
 class DetailPenerimaanController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index($id_penerimaan)
     {
-        //
+        $details = DetailPenerimaan::with('produk')
+            ->where('id_penerimaan', $id_penerimaan)
+            ->get();
+        $idPenerimaan = $id_penerimaan;
+        return view('detail_penerimaan.index', compact('details', 'idPenerimaan'));
     }
 
     /**

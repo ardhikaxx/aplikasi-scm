@@ -2,16 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\DetailSo;
 use Illuminate\Http\Request;
 
 class DetailSoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
+    public function index($id_so)
     {
-        //
+        $details = DetailSo::where('id_so', $id_so)->get();
+        $idSo = $id_so;
+        return view('detail_so.index', compact('details', 'idSo'));
     }
 
     /**
