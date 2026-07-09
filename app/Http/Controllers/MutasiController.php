@@ -18,31 +18,23 @@ class MutasiController extends Controller
      */
     public function create()
     {
-        //
+        return view('mutasi.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $mutasi = Mutasi::findOrFail($id);
+        return view('mutasi.edit', compact('mutasi'));
     }
 
     /**

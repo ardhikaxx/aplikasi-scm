@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\DetailPenerimaan;
+use App\Models\Produk;
 use Illuminate\Http\Request;
 
 class DetailPenerimaanController extends Controller
@@ -19,33 +20,29 @@ class DetailPenerimaanController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id_penerimaan)
     {
-        //
+        $idPenerimaan = $id_penerimaan;
+        $produks = Produk::all();
+        return view('detail_penerimaan.create', compact('idPenerimaan', 'produks'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id_penerimaan, $id_detail)
     {
-        //
+        $idPenerimaan = $id_penerimaan;
+        $detail = DetailPenerimaan::findOrFail($id_detail);
+        $produks = Produk::all();
+        return view('detail_penerimaan.edit', compact('idPenerimaan', 'detail', 'produks'));
     }
 
     /**

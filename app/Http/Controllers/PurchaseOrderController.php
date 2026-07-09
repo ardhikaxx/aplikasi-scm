@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PurchaseOrder;
+use App\Models\Supplier;
 use Illuminate\Http\Request;
 
 class PurchaseOrderController extends Controller
@@ -18,31 +19,25 @@ class PurchaseOrderController extends Controller
      */
     public function create()
     {
-        //
+        $suppliers = Supplier::all();
+        return view('purchase_order.create', compact('suppliers'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $purchaseOrder = PurchaseOrder::with('supplier')->findOrFail($id);
+        $suppliers = Supplier::all();
+        return view('purchase_order.edit', compact('purchaseOrder', 'suppliers'));
     }
 
     /**

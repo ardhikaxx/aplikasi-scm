@@ -42,7 +42,8 @@ class SatuanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $satuan = SatuanUkur::findOrFail($id);
+        return view('satuan.edit', compact('satuan'));
     }
 
     /**

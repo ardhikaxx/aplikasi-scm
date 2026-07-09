@@ -42,7 +42,8 @@ class KategoriController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $kategori = KategoriProduk::findOrFail($id);
+        return view('kategori.edit', compact('kategori'));
     }
 
     /**

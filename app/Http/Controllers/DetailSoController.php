@@ -17,33 +17,27 @@ class DetailSoController extends Controller
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create($id_so)
     {
-        //
+        $idSo = $id_so;
+        return view('detail_so.create', compact('idSo'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(string $id)
+    public function edit($id_so, $id_detail)
     {
-        //
+        $idSo = $id_so;
+        $detail = DetailSo::findOrFail($id_detail);
+        return view('detail_so.edit', compact('idSo', 'detail'));
     }
 
     /**

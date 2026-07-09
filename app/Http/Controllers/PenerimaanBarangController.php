@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\PenerimaanBarang;
+use App\Models\PurchaseOrder;
 use Illuminate\Http\Request;
 
 class PenerimaanBarangController extends Controller
@@ -18,31 +19,25 @@ class PenerimaanBarangController extends Controller
      */
     public function create()
     {
-        //
+        $pos = PurchaseOrder::with('supplier')->get();
+        return view('penerimaan_barang.create', compact('pos'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $penerimaanBarang = PenerimaanBarang::with('purchaseOrder')->findOrFail($id);
+        $pos = PurchaseOrder::with('supplier')->get();
+        return view('penerimaan_barang.edit', compact('penerimaanBarang', 'pos'));
     }
 
     /**

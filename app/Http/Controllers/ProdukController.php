@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\KategoriProduk;
 use App\Models\Produk;
+use App\Models\SatuanUkur;
 use Illuminate\Http\Request;
 
 class ProdukController extends Controller
@@ -18,7 +20,9 @@ class ProdukController extends Controller
      */
     public function create()
     {
-        //
+        $kategoris = KategoriProduk::all();
+        $satuans = SatuanUkur::all();
+        return view('produk.create', compact('kategoris', 'satuans'));
     }
 
     /**
@@ -42,7 +46,10 @@ class ProdukController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $produk = Produk::with('kategori', 'satuan')->findOrFail($id);
+        $kategoris = KategoriProduk::all();
+        $satuans = SatuanUkur::all();
+        return view('produk.edit', compact('produk', 'kategoris', 'satuans'));
     }
 
     /**

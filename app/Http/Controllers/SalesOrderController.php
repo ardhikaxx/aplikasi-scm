@@ -18,31 +18,23 @@ class SalesOrderController extends Controller
      */
     public function create()
     {
-        //
+        return view('sales_order.create');
     }
 
-    /**
-     * Store a newly created resource in storage.
-     */
     public function store(Request $request)
     {
         //
     }
 
-    /**
-     * Display the specified resource.
-     */
     public function show(string $id)
     {
         //
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     */
     public function edit(string $id)
     {
-        //
+        $salesOrder = SalesOrder::findOrFail($id);
+        return view('sales_order.edit', compact('salesOrder'));
     }
 
     /**
