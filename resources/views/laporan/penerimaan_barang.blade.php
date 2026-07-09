@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span><i class="bi bi-arrow-down-circle me-2 text-primary"></i>Data Penerimaan Barang</span>
-            <button onclick="window.print()" class="btn btn-gradient-primary btn-sm">
+            <button onclick="window.print()" class="btn btn-primary btn-sm">
                 <i class="bi bi-printer me-1"></i>Cetak
             </button>
         </div>
@@ -27,7 +27,7 @@
                         @forelse ($penerimaans as $d)
                             <tr>
                                 <td class="fw-semibold text-muted">{{ $loop->iteration }}</td>
-                                <td><span class="badge bg-light text-dark">PO-{{ $d->purchaseOrder->id_po ?? $d->id_po }}</span></td>
+                                <td><span class="badge badge-blue">PO-{{ $d->purchaseOrder->id_po ?? $d->id_po }}</span></td>
                                 <td>{{ $d->purchaseOrder->supplier->nama_supplier ?? '-' }}</td>
                                 <td>{{ \Carbon\Carbon::parse($d->tanggal)->format('d/m/Y') }}</td>
                                 <td>{{ $d->keterangan ?? '-' }}</td>

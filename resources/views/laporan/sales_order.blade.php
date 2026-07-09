@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span><i class="bi bi-cart-check me-2 text-primary"></i>Data Sales Order</span>
-            <button onclick="window.print()" class="btn btn-gradient-primary btn-sm">
+            <button onclick="window.print()" class="btn btn-primary btn-sm">
                 <i class="bi bi-printer me-1"></i>Cetak
             </button>
         </div>
@@ -31,13 +31,13 @@
                                 <td>
                                     @php
                                         $badgeClass = match($d->status) {
-                                            'Pending' => 'bg-warning',
-                                            'Diproses' => 'bg-info',
-                                            'Selesai' => 'bg-success',
-                                            default => 'bg-secondary'
+                                            'Pending' => 'badge-yellow',
+                                            'Diproses' => 'badge-blue',
+                                            'Selesai' => 'badge-green',
+                                            default => 'badge-gray'
                                         };
                                     @endphp
-                                    <span class="badge-status {{ $badgeClass }} text-white">{{ $d->status }}</span>
+                                    <span class="badge-status {{ $badgeClass }}">{{ $d->status }}</span>
                                 </td>
                             </tr>
                         @empty

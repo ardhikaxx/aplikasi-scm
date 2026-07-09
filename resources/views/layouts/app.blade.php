@@ -9,62 +9,59 @@
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         * { font-family: 'Inter', sans-serif; }
-        body { background: #f0f2f5; }
+        body { background: #f1f5f9; }
         .sidebar {
             width: 260px;
             min-height: 100vh;
-            background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%);
+            background: #1e293b;
             position: fixed;
             top: 0;
             left: 0;
             z-index: 1000;
-            transition: all 0.3s;
         }
         .sidebar-brand {
             padding: 1.2rem 1.5rem;
-            border-bottom: 1px solid rgba(255,255,255,0.08);
+            border-bottom: 1px solid rgba(255,255,255,0.06);
         }
         .sidebar-brand h4 {
             color: #fff;
             font-weight: 700;
             letter-spacing: 0.5px;
             margin: 0;
+            font-size: 1.2rem;
         }
         .sidebar-brand small {
-            color: rgba(255,255,255,0.5);
+            color: #94a3b8;
             font-size: 0.7rem;
         }
         .sidebar .nav-link {
-            color: rgba(255,255,255,0.65);
-            padding: 0.75rem 1.5rem;
-            margin: 2px 0.5rem;
-            border-radius: 10px;
-            font-size: 0.9rem;
+            color: #94a3b8;
+            padding: 0.7rem 1.2rem;
+            margin: 2px 0.7rem;
+            border-radius: 8px;
+            font-size: 0.88rem;
             font-weight: 500;
-            transition: all 0.2s;
             display: flex;
             align-items: center;
             gap: 12px;
         }
-        .sidebar .nav-link i { font-size: 1.1rem; width: 22px; text-align: center; }
+        .sidebar .nav-link i { font-size: 1.05rem; width: 20px; text-align: center; }
         .sidebar .nav-link:hover {
             color: #fff;
-            background: rgba(255,255,255,0.08);
+            background: rgba(255,255,255,0.06);
         }
         .sidebar .nav-link.active {
-            color: #fff;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            box-shadow: 0 4px 15px rgba(102,126,234,0.4);
+            color: #2563eb;
+            background: rgba(37,99,235,0.12);
         }
         .main-content {
             margin-left: 260px;
             min-height: 100vh;
-            padding: 0;
         }
         .topbar {
             background: #fff;
             padding: 1rem 2rem;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: 1px solid #e2e8f0;
             display: flex;
             align-items: center;
             justify-content: space-between;
@@ -75,220 +72,242 @@
         .topbar h5 {
             margin: 0;
             font-weight: 600;
-            color: #1a1a2e;
+            color: #1e293b;
+            font-size: 1.1rem;
         }
-        .topbar .breadcrumb {
-            margin: 0;
-            background: none;
-            font-size: 0.85rem;
+        .topbar h5 i {
+            color: #2563eb;
+            margin-right: 10px;
         }
         .content-wrapper {
             padding: 1.5rem 2rem;
         }
         .stat-card {
             border: none;
-            border-radius: 16px;
-            transition: all 0.3s;
-            overflow: hidden;
-            position: relative;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.08);
+            transition: all 0.25s;
         }
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            transform: translateY(-2px);
         }
         .stat-card .card-body {
-            padding: 1.5rem;
-            position: relative;
-            z-index: 1;
+            padding: 1.4rem;
         }
-        .stat-card .icon-bg {
-            position: absolute;
-            right: -10px;
-            bottom: -10px;
-            font-size: 5rem;
-            opacity: 0.15;
-            color: #fff;
+        .stat-card .stat-icon {
+            width: 48px;
+            height: 48px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
         }
         .stat-card .stat-number {
-            font-size: 2.2rem;
+            font-size: 1.8rem;
             font-weight: 700;
+            color: #1e293b;
             margin: 0;
             line-height: 1.2;
         }
         .stat-card .stat-label {
-            font-size: 0.85rem;
-            opacity: 0.85;
-            margin-bottom: 0.5rem;
+            font-size: 0.82rem;
+            color: #64748b;
             font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+        .stat-card .stat-footer {
+            font-size: 0.75rem;
+            color: #94a3b8;
         }
         .card-custom {
             border: none;
-            border-radius: 16px;
-            box-shadow: 0 2px 12px rgba(0,0,0,0.06);
-            transition: all 0.3s;
-        }
-        .card-custom:hover {
-            box-shadow: 0 6px 24px rgba(0,0,0,0.1);
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
         .card-custom .card-header {
-            background: transparent;
-            border-bottom: 1px solid #f0f0f0;
-            padding: 1.2rem 1.5rem;
+            background: #fff;
+            border-bottom: 1px solid #f1f5f9;
+            padding: 1.1rem 1.4rem;
             font-weight: 600;
+            color: #1e293b;
+            font-size: 0.95rem;
         }
-        .card-custom .card-body {
-            padding: 1.5rem;
-        }
+        .card-custom .card-header i { color: #2563eb; }
+        .card-custom .card-body { padding: 1.4rem; }
         .table-custom {
             border-collapse: separate;
             border-spacing: 0;
         }
         .table-custom thead th {
-            background: #f8f9fa;
-            border-bottom: 2px solid #e9ecef;
-            color: #495057;
+            background: #f8fafc;
+            border-bottom: 1.5px solid #e2e8f0;
+            color: #475569;
             font-weight: 600;
-            font-size: 0.85rem;
+            font-size: 0.78rem;
             text-transform: uppercase;
-            letter-spacing: 0.5px;
-            padding: 0.9rem 1rem;
+            letter-spacing: 0.4px;
+            padding: 0.85rem 1rem;
         }
         .table-custom tbody tr {
-            transition: all 0.2s;
+            transition: background 0.15s;
         }
         .table-custom tbody tr:hover {
-            background: #f0f4ff;
+            background: #f8fafc;
         }
         .table-custom tbody td {
-            padding: 0.9rem 1rem;
+            padding: 0.85rem 1rem;
             vertical-align: middle;
-            border-bottom: 1px solid #f0f0f0;
-        }
-        .btn-gradient-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            border: none;
-            color: #fff;
-            font-weight: 500;
-            transition: all 0.3s;
-        }
-        .btn-gradient-primary:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(102,126,234,0.4);
-            color: #fff;
-        }
-        .btn-gradient-success {
-            background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%);
-            border: none;
-            color: #fff;
-            font-weight: 500;
-        }
-        .btn-gradient-success:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(17,153,142,0.4);
-            color: #fff;
-        }
-        .btn-gradient-danger {
-            background: linear-gradient(135deg, #eb3349 0%, #f45c43 100%);
-            border: none;
-            color: #fff;
-            font-weight: 500;
-        }
-        .btn-gradient-danger:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(235,51,73,0.4);
-            color: #fff;
-        }
-        .btn-gradient-warning {
-            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
-            border: none;
-            color: #fff;
-            font-weight: 500;
-        }
-        .btn-gradient-warning:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(245,87,108,0.4);
-            color: #fff;
-        }
-        .btn-gradient-info {
-            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
-            border: none;
-            color: #fff;
-            font-weight: 500;
-        }
-        .btn-gradient-info:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 6px 20px rgba(79,172,254,0.4);
-            color: #fff;
-        }
-        .form-custom {
-            border-radius: 12px;
-            border: 1.5px solid #e0e0e0;
-            padding: 0.65rem 1rem;
-            transition: all 0.2s;
+            border-bottom: 1px solid #f1f5f9;
             font-size: 0.9rem;
         }
+        .btn-primary-custom {
+            background: #2563eb;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+        }
+        .btn-primary-custom:hover {
+            background: #1d4ed8;
+            color: #fff;
+        }
+        .btn-success-custom {
+            background: #059669;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.5rem 1.2rem;
+            border-radius: 8px;
+        }
+        .btn-success-custom:hover {
+            background: #047857;
+            color: #fff;
+        }
+        .btn-danger-custom {
+            background: #dc2626;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+        .btn-danger-custom:hover {
+            background: #b91c1c;
+            color: #fff;
+        }
+        .btn-warning-custom {
+            background: #d97706;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+        .btn-warning-custom:hover {
+            background: #b45309;
+            color: #fff;
+        }
+        .btn-info-custom {
+            background: #0891b2;
+            border: none;
+            color: #fff;
+            font-weight: 500;
+            border-radius: 8px;
+        }
+        .btn-info-custom:hover {
+            background: #0e7490;
+            color: #fff;
+        }
+        .btn-outline-custom {
+            border: 1.5px solid #e2e8f0;
+            color: #475569;
+            background: #fff;
+            border-radius: 8px;
+            font-weight: 500;
+            font-size: 0.88rem;
+            padding: 0.5rem 1.2rem;
+        }
+        .btn-outline-custom:hover {
+            background: #f8fafc;
+            border-color: #cbd5e1;
+        }
+        .btn-sm-custom {
+            padding: 0.25rem 0.6rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
+        }
+        .form-custom {
+            border-radius: 8px;
+            border: 1.5px solid #e2e8f0;
+            padding: 0.6rem 0.9rem;
+            font-size: 0.9rem;
+            transition: border-color 0.15s;
+        }
         .form-custom:focus {
-            border-color: #667eea;
-            box-shadow: 0 0 0 3px rgba(102,126,234,0.15);
+            border-color: #2563eb;
+            box-shadow: 0 0 0 3px rgba(37,99,235,0.1);
         }
         .form-custom-lg {
-            padding: 0.8rem 1.2rem;
-            font-size: 1rem;
-        }
-        .alert-custom {
-            border: none;
-            border-radius: 12px;
-            padding: 1rem 1.2rem;
-            border-left: 4px solid;
-        }
-        .alert-custom.alert-success {
-            background: #d4edda;
-            border-left-color: #28a745;
-        }
-        .badge-status {
-            padding: 0.4rem 0.9rem;
-            border-radius: 50px;
-            font-size: 0.78rem;
-            font-weight: 500;
-        }
-        .empty-state {
-            padding: 3rem 1rem;
-            text-align: center;
-        }
-        .empty-state i {
-            font-size: 4rem;
-            color: #d0d0d0;
-            margin-bottom: 1rem;
-        }
-        .empty-state h6 {
-            color: #888;
-            font-weight: 500;
+            padding: 0.75rem 1rem;
         }
         .page-title {
             font-weight: 700;
-            color: #1a1a2e;
+            color: #1e293b;
             margin: 0;
+            font-size: 1.2rem;
         }
-        .page-title i {
-            margin-right: 10px;
-            color: #667eea;
+        .page-title i { color: #2563eb; margin-right: 10px; }
+        .section-label {
+            font-size: 0.82rem;
+            font-weight: 600;
+            color: #475569;
+            margin-bottom: 0.5rem;
+        }
+        .badge-status {
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
+        .badge-blue { background: #dbeafe; color: #1d4ed8; }
+        .badge-green { background: #d1fae5; color: #047857; }
+        .badge-red { background: #fee2e2; color: #b91c1c; }
+        .badge-yellow { background: #fef3c7; color: #b45309; }
+        .badge-gray { background: #f1f5f9; color: #475569; }
+        .empty-state {
+            padding: 2.5rem 1rem;
+            text-align: center;
+        }
+        .empty-state i {
+            font-size: 3rem;
+            color: #cbd5e1;
+            margin-bottom: 0.8rem;
+        }
+        .empty-state h6 {
+            color: #94a3b8;
+            font-weight: 500;
+            font-size: 0.9rem;
         }
         .action-group {
             display: flex;
-            gap: 5px;
+            gap: 4px;
         }
         .action-group .btn {
-            padding: 0.3rem 0.7rem;
-            font-size: 0.8rem;
-            border-radius: 8px;
+            padding: 0.25rem 0.55rem;
+            font-size: 0.78rem;
+            border-radius: 6px;
         }
         .floating-alert {
             position: fixed;
             top: 20px;
             right: 20px;
             z-index: 9999;
-            min-width: 300px;
-            animation: slideIn 0.3s ease;
+            min-width: 320px;
+            animation: slideIn 0.25s ease;
         }
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
@@ -296,34 +315,42 @@
         }
         .summary-card {
             background: #fff;
-            border-radius: 16px;
-            padding: 1.5rem;
-            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            padding: 1.2rem;
+            border: 1px solid #f1f5f9;
         }
         .summary-card .label {
-            color: #888;
-            font-size: 0.85rem;
+            color: #64748b;
+            font-size: 0.8rem;
             font-weight: 500;
         }
         .summary-card .value {
-            font-size: 1.5rem;
+            font-size: 1.3rem;
             font-weight: 700;
-            color: #1a1a2e;
+            color: #1e293b;
         }
-        .gradient-1 { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
-        .gradient-2 { background: linear-gradient(135deg, #11998e 0%, #38ef7d 100%); }
-        .gradient-3 { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
-        .gradient-4 { background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%); }
-        .gradient-5 { background: linear-gradient(135deg, #fa709a 0%, #fee140 100%); }
+        .icon-box {
+            width: 42px;
+            height: 42px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.1rem;
+        }
+        .bg-soft-primary { background: #dbeafe; color: #2563eb; }
+        .bg-soft-success { background: #d1fae5; color: #059669; }
+        .bg-soft-warning { background: #fef3c7; color: #d97706; }
+        .bg-soft-info { background: #cffafe; color: #0891b2; }
     </style>
 </head>
 <body>
-    <div class="sidebar">
+    <div class="sidebar d-flex flex-column">
         <div class="sidebar-brand">
             <h4><i class="bi bi-box-seam me-2"></i>SCM App</h4>
             <small>Manajemen Rantai Pasokan</small>
         </div>
-        <nav class="mt-3">
+        <nav class="mt-2 flex-grow-1">
             <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">
                 <i class="bi bi-speedometer2"></i> Dashboard
             </a>
@@ -355,23 +382,26 @@
                 <i class="bi bi-bar-chart"></i> Laporan
             </a>
         </nav>
+        <div class="p-3 border-top border-secondary border-opacity-10">
+            <small class="text-secondary" style="color: #475569 !important; font-size: 0.7rem;">
+                <i class="bi bi-calendar3 me-1"></i>{{ now()->format('d F Y') }}
+            </small>
+        </div>
     </div>
 
     <div class="main-content">
         <div class="topbar">
-            <div>
-                <h5>@yield('page_title', 'Dashboard')</h5>
-            </div>
-            <div class="d-flex align-items-center gap-3">
-                <span class="text-muted small"><i class="bi bi-calendar3 me-1"></i>{{ now()->format('d F Y') }}</span>
+            <h5><i class="bi bi-grid-1x2"></i>@yield('page_title', 'Dashboard')</h5>
+            <div class="d-flex align-items-center gap-2">
+                <span class="text-muted small">v1.0</span>
             </div>
         </div>
 
         <div class="content-wrapper">
             @if(session('success'))
                 <div class="floating-alert">
-                    <div class="alert alert-success alert-custom d-flex align-items-center shadow-sm mb-0">
-                        <i class="bi bi-check-circle-fill me-2 fs-5"></i>
+                    <div class="alert alert-success d-flex align-items-center shadow-sm mb-0 border-0" style="border-radius: 10px; border-left: 4px solid #059669 !important;">
+                        <i class="bi bi-check-circle-fill me-2" style="color: #059669;"></i>
                         <span>{{ session('success') }}</span>
                         <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
                     </div>
@@ -380,8 +410,8 @@
 
             @if(session('error'))
                 <div class="floating-alert">
-                    <div class="alert alert-danger alert-custom d-flex align-items-center shadow-sm mb-0">
-                        <i class="bi bi-exclamation-circle-fill me-2 fs-5"></i>
+                    <div class="alert alert-danger d-flex align-items-center shadow-sm mb-0 border-0" style="border-radius: 10px; border-left: 4px solid #dc2626 !important;">
+                        <i class="bi bi-exclamation-circle-fill me-2" style="color: #dc2626;"></i>
                         <span>{{ session('error') }}</span>
                         <button type="button" class="btn-close ms-3" data-bs-dismiss="alert"></button>
                     </div>
@@ -396,9 +426,9 @@
     <script>
         setTimeout(function() {
             document.querySelectorAll('.floating-alert').forEach(function(el) {
-                el.style.transition = 'opacity 0.5s';
+                el.style.transition = 'opacity 0.4s';
                 el.style.opacity = '0';
-                setTimeout(function() { el.remove(); }, 500);
+                setTimeout(function() { el.remove(); }, 400);
             });
         }, 4000);
     </script>

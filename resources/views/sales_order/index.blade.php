@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span><i class="bi bi-cart-check me-2 text-primary"></i>Daftar Sales Order</span>
-            <a href="{{ route('sales_order.create') }}" class="btn btn-gradient-primary btn-sm">
+            <a href="{{ route('sales_order.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Tambah SO
             </a>
         </div>
@@ -32,26 +32,25 @@
                                 <td>
                                     @php
                                         $badgeClass = match($d->status) {
-                                            'Pending' => 'bg-warning',
-                                            'Diproses' => 'bg-info',
-                                            'Selesai' => 'bg-success',
-                                            default => 'bg-secondary'
+                                            'Pending' => 'badge-yellow',
+                                            'Diproses' => 'badge-blue',
+                                            'Selesai' => 'badge-green',
+                                            default => 'badge-gray'
                                         };
                                     @endphp
-                                    <span class="badge-status {{ $badgeClass }} text-white">{{ $d->status }}</span>
+                                    <span class="badge-status {{ $badgeClass }}">{{ $d->status }}</span>
                                 </td>
                                 <td>
                                     <div class="action-group">
-                                        <a href="{{ route('detail_so.index', $d->id_so) }}" class="btn btn-gradient-info btn-sm">
+                                        <a href="{{ route('detail_so.index', $d->id_so) }}" class="btn btn-info btn-sm" title="Detail">
                                             <i class="bi bi-eye"></i>
                                         </a>
-                                        <a href="{{ route('sales_order.edit', $d->id_so) }}" class="btn btn-gradient-warning btn-sm">
+                                        <a href="{{ route('sales_order.edit', $d->id_so) }}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('sales_order.destroy', $d->id_so) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-gradient-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -64,7 +63,7 @@
                                     <div class="empty-state">
                                         <i class="bi bi-cart-check"></i>
                                         <h6>Belum ada data sales order</h6>
-                                        <a href="{{ route('sales_order.create') }}" class="btn btn-gradient-primary btn-sm mt-2">
+                                        <a href="{{ route('sales_order.create') }}" class="btn btn-primary btn-sm mt-2">
                                             <i class="bi bi-plus-lg me-1"></i>Tambah SO
                                         </a>
                                     </div>

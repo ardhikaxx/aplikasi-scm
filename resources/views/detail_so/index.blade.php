@@ -8,10 +8,10 @@
         <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span><i class="bi bi-receipt me-2 text-primary"></i>Detail Sales Order (ID: {{ $idSo }})</span>
             <div class="d-flex gap-2">
-                <a href="{{ route('detail_so.create', $idSo) }}" class="btn btn-gradient-success btn-sm">
+                <a href="{{ route('detail_so.create', $idSo) }}" class="btn btn-primary btn-sm">
                     <i class="bi bi-plus-lg me-1"></i>Tambah Detail
                 </a>
-                <a href="{{ route('sales_order.index') }}" class="btn btn-light btn-sm">
+                <a href="{{ route('sales_order.index') }}" class="btn btn-outline-secondary btn-sm">
                     <i class="bi bi-arrow-left me-1"></i>Kembali
                 </a>
             </div>
@@ -35,13 +35,12 @@
                                 <td class="text-center">{{ number_format($d->jumlah, 0, ',', '.') }}</td>
                                 <td>
                                     <div class="action-group">
-                                        <a href="{{ route('detail_so.edit', [$idSo, $d->id_detail]) }}" class="btn btn-gradient-warning btn-sm">
+                                        <a href="{{ route('detail_so.edit', [$idSo, $d->id_detail]) }}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('detail_so.destroy', [$idSo, $d->id_detail]) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-gradient-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>

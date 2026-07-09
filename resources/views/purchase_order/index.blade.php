@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span><i class="bi bi-cart-plus me-2 text-primary"></i>Daftar Purchase Order</span>
-            <a href="{{ route('purchase_order.create') }}" class="btn btn-gradient-primary btn-sm">
+            <a href="{{ route('purchase_order.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Tambah PO
             </a>
         </div>
@@ -32,13 +32,12 @@
                                 <td class="text-end fw-semibold">Rp {{ number_format($d->total, 0, ',', '.') }}</td>
                                 <td>
                                     <div class="action-group">
-                                        <a href="{{ route('purchase_order.edit', $d->id_po) }}" class="btn btn-gradient-warning btn-sm">
+                                        <a href="{{ route('purchase_order.edit', $d->id_po) }}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('purchase_order.destroy', $d->id_po) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-gradient-danger btn-sm" onclick="return confirm('Yakin ingin menghapus PO ini?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus PO ini?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -51,7 +50,7 @@
                                     <div class="empty-state">
                                         <i class="bi bi-cart-plus"></i>
                                         <h6>Belum ada data purchase order</h6>
-                                        <a href="{{ route('purchase_order.create') }}" class="btn btn-gradient-primary btn-sm mt-2">
+                                        <a href="{{ route('purchase_order.create') }}" class="btn btn-primary btn-sm mt-2">
                                             <i class="bi bi-plus-lg me-1"></i>Tambah PO
                                         </a>
                                     </div>

@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span><i class="bi bi-tags me-2 text-primary"></i>Form Tambah Kategori</span>
-            <a href="{{ route('kategori.index') }}" class="btn btn-light btn-sm">
+            <a href="{{ route('kategori.index') }}" class="btn btn-outline-secondary btn-sm">
                 <i class="bi bi-arrow-left me-1"></i>Kembali
             </a>
         </div>
@@ -16,23 +16,19 @@
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        <label for="nama_kategori" class="form-label fw-medium">
-                            <i class="bi bi-tag text-primary me-1"></i>Nama Kategori
-                        </label>
+                        <label for="nama_kategori" class="form-label fw-medium">Nama Kategori</label>
                         <input type="text" name="nama_kategori" id="nama_kategori"
                             class="form-control form-custom @error('nama_kategori') is-invalid @enderror"
                             value="{{ old('nama_kategori') }}" required placeholder="Masukkan nama kategori">
-                        @error('nama_kategori')
-                            <div class="invalid-feedback">{{ $message }}</div>
-                        @enderror
+                        @error('nama_kategori')<div class="invalid-feedback">{{ $message }}</div>@enderror
                     </div>
                 </div>
                 <hr class="my-4">
                 <div class="d-flex gap-2">
-                    <button type="submit" class="btn btn-gradient-primary">
+                    <button type="submit" class="btn btn-primary">
                         <i class="bi bi-save me-1"></i>Simpan
                     </button>
-                    <a href="{{ route('kategori.index') }}" class="btn btn-light">Batal</a>
+                    <a href="{{ route('kategori.index') }}" class="btn btn-outline-secondary">Batal</a>
                 </div>
             </form>
         </div>

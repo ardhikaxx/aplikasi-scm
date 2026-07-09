@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center flex-wrap gap-2">
             <span><i class="bi bi-box me-2 text-primary"></i>Daftar Produk</span>
-            <a href="{{ route('produk.create') }}" class="btn btn-gradient-primary btn-sm">
+            <a href="{{ route('produk.create') }}" class="btn btn-primary btn-sm">
                 <i class="bi bi-plus-lg me-1"></i>Tambah Produk
             </a>
         </div>
@@ -32,25 +32,24 @@
                             <tr>
                                 <td class="fw-semibold text-muted">{{ $loop->iteration }}</td>
                                 <td class="fw-medium">{{ $d->nama_produk }}</td>
-                                <td><span class="badge bg-light text-dark">{{ $d->kategori->nama_kategori ?? '-' }}</span></td>
+                                <td><span class="badge badge-blue">{{ $d->kategori->nama_kategori ?? '-' }}</span></td>
                                 <td>{{ $d->satuan->nama_satuan ?? '-' }}</td>
                                 <td class="text-end">Rp {{ number_format($d->harga_beli, 0, ',', '.') }}</td>
                                 <td class="text-end">Rp {{ number_format($d->harga_jual, 0, ',', '.') }}</td>
                                 <td class="text-center">
-                                    <span class="badge {{ $d->stok <= $d->reorder_point ? 'bg-danger' : 'bg-success' }} rounded-pill">
+                                    <span class="badge-status {{ $d->stok <= $d->reorder_point ? 'badge-red' : 'badge-green' }}">
                                         {{ $d->stok }}
                                     </span>
                                 </td>
                                 <td class="text-center">{{ $d->reorder_point }}</td>
                                 <td>
                                     <div class="action-group">
-                                        <a href="{{ route('produk.edit', $d->id_produk) }}" class="btn btn-gradient-warning btn-sm">
+                                        <a href="{{ route('produk.edit', $d->id_produk) }}" class="btn btn-warning btn-sm">
                                             <i class="bi bi-pencil"></i>
                                         </a>
                                         <form action="{{ route('produk.destroy', $d->id_produk) }}" method="POST" class="d-inline">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-gradient-danger btn-sm" onclick="return confirm('Yakin ingin menghapus produk {{ $d->nama_produk }}?')">
+                                            @csrf @method('DELETE')
+                                            <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Yakin ingin menghapus produk {{ $d->nama_produk }}?')">
                                                 <i class="bi bi-trash"></i>
                                             </button>
                                         </form>
@@ -63,7 +62,7 @@
                                     <div class="empty-state">
                                         <i class="bi bi-box"></i>
                                         <h6>Belum ada data produk</h6>
-                                        <a href="{{ route('produk.create') }}" class="btn btn-gradient-primary btn-sm mt-2">
+                                        <a href="{{ route('produk.create') }}" class="btn btn-primary btn-sm mt-2">
                                             <i class="bi bi-plus-lg me-1"></i>Tambah Produk
                                         </a>
                                     </div>

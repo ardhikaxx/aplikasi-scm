@@ -7,7 +7,7 @@
     <div class="card card-custom">
         <div class="card-header d-flex justify-content-between align-items-center">
             <span><i class="bi bi-cart-plus me-2 text-primary"></i>Data Purchase Order</span>
-            <button onclick="window.print()" class="btn btn-gradient-primary btn-sm">
+            <button onclick="window.print()" class="btn btn-primary btn-sm">
                 <i class="bi bi-printer me-1"></i>Cetak
             </button>
         </div>
